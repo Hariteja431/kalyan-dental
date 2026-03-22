@@ -38,7 +38,7 @@ export function Hero() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-[center_72%] md:object-center"
             style={{
               animation: "kenBurns 12s ease-in-out infinite alternate",
             }}

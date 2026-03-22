@@ -60,7 +60,7 @@ export function CommonProblems() {
               label={tab.infographic.label}
               className="mb-8 w-full max-w-2xl mx-auto"
             />
-            <div className="prose prose-neutral max-w-none">
+            <div className="max-w-none">
               {tab.blocks.map((b, i) => {
                 if (b.type === "h4") {
                   return (

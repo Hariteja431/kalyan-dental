@@ -32,6 +32,18 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: META.title,
   description: META.description,
+  openGraph: {
+    title: META.title,
+    description: META.description,
+    locale: "en_IN",
+    type: "website",
+  },
+};
+
+export const viewport = {
+  width: "device-width" as const,
+  initialScale: 1,
+  themeColor: "#0B4C6C",
 };
 
 export default function RootLayout({

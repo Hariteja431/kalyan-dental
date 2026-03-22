@@ -1,10 +1,4 @@
-import {
-  ADDRESS_LINES,
-  CLINIC_HOURS,
-  CLINIC_NAME,
-  PHONE_1,
-  PHONE_2,
-} from "@/lib/constants";
+import { ADDRESS_LINES, CLINIC_NAME, PHONE_1, PHONE_2 } from "@/lib/constants";
 
 export function LocalBusinessJsonLd() {
   const jsonLd = {

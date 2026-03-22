@@ -39,9 +39,7 @@ const initial: FormState = {
 
 export function Appointment() {
   const [form, setForm] = useState<FormState>(initial);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
   const [shake, setShake] = useState(false);
   const [fieldError, setFieldError] = useState<string | null>(null);
 
