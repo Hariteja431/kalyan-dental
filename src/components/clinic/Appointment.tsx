@@ -11,7 +11,6 @@ import {
   PHONE_1_TEL,
   PHONE_2_TEL,
 } from "@/lib/constants";
-import { doctorOptionsForForm } from "@/lib/doctors";
 import { serviceOptionsForForm } from "@/lib/services";
 import { timeSlots } from "@/lib/timeSlots";
 
@@ -20,7 +19,6 @@ type FormState = {
   phone: string;
   email: string;
   service: string;
-  doctor: string;
   date: string;
   time: string;
   message: string;
@@ -31,7 +29,6 @@ const initial: FormState = {
   phone: "",
   email: "",
   service: "",
-  doctor: "",
   date: "",
   time: "",
   message: "",
@@ -192,26 +189,6 @@ export function Appointment() {
                       <option value="">Select a service</option>
                       {serviceOptionsForForm.map((o) => (
                         <option key={o.value} value={o.value}>
-                          {o.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="doctor" className="mb-1 block text-sm font-medium text-[var(--color-text-secondary)]">
-                      Preferred Doctor
-                    </label>
-                    <select
-                      id="doctor"
-                      name="doctor"
-                      value={form.doctor}
-                      onChange={(e) =>
-                        setForm((f) => ({ ...f, doctor: e.target.value }))
-                      }
-                      className="w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-white px-4 py-3 focus:border-[var(--color-accent)] focus:outline-none focus:ring-[3px] focus:ring-[rgba(0,180,166,0.2)]"
-                    >
-                      {doctorOptionsForForm.map((o) => (
-                        <option key={o.label} value={o.value}>
                           {o.label}
                         </option>
                       ))}

@@ -63,7 +63,7 @@ export function ChildrenHealth() {
       className="scroll-mt-24 py-12 md:py-16 lg:py-20"
       style={{ backgroundColor: "rgba(0, 180, 166, 0.06)" }}
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+      <div className="mx-auto max-w-7xl min-w-0 overflow-x-hidden px-4 md:px-6">
         <Reveal>
           <div className="mb-12 text-center">
             <SectionEyebrow className="text-center">For Parents</SectionEyebrow>
@@ -94,10 +94,10 @@ export function ChildrenHealth() {
                   <p className="text-sm font-semibold uppercase tracking-wider text-[var(--color-accent)]">
                     {row.age}
                   </p>
-                  <h3 className="font-heading mt-1 text-[length:var(--text-h3)] font-semibold text-[var(--color-text-primary)]">
+                  <h3 className="font-heading mt-1 break-words text-[length:var(--text-h3)] font-semibold text-[var(--color-text-primary)]">
                     {row.milestone}
                   </h3>
-                  <p className="mt-2 text-[length:var(--text-body)] text-[var(--color-text-secondary)]">
+                  <p className="mt-2 break-words text-[length:var(--text-body)] text-[var(--color-text-secondary)]">
                     <strong className="text-[var(--color-text-primary)]">Action: </strong>
                     {row.action}
                   </p>
@@ -117,6 +117,8 @@ export function ChildrenHealth() {
             width={600}
             height={300}
             label="Infographic: Children's tooth eruption chart — timeline of baby and permanent teeth"
+            imageSrc="/api/common-dental-problems-images/Child%27s%20Dental%20Journey.png"
+            imageAlt="Child's Dental Journey infographic"
             className="mx-auto mt-16 max-w-4xl"
           />
         </Reveal>

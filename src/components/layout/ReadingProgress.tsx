@@ -11,7 +11,7 @@ export function ReadingProgress() {
 
   return (
     <div
-      className="pointer-events-none fixed left-0 top-0 z-[1001] h-0.5 w-full bg-[var(--color-divider)]"
+      className="pointer-events-none fixed left-0 top-0 z-[1001] h-0.5 w-full max-w-[100vw] bg-[var(--color-divider)]"
       aria-hidden
     >
       <div

@@ -41,19 +41,22 @@ export function Testimonials() {
         </Reveal>
 
         <div
-          className="relative md:hidden"
+          className="relative w-full min-w-0 md:hidden"
           onTouchStart={() => setPaused(true)}
           onTouchEnd={() => setPaused(false)}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="overflow-hidden">
+          <div className="w-full min-w-0 overflow-hidden">
             <div
-              className="flex transition-transform duration-500 ease-out"
+              className="flex w-full min-w-0 transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${index * 100}%)` }}
             >
               {testimonials.map((t) => (
-                <div key={t.name} className="w-full shrink-0 px-1">
+                <div
+                  key={t.name}
+                  className="w-full min-w-0 shrink-0 basis-full px-1"
+                >
                   <TestimonialCard t={t} />
                 </div>
               ))}
@@ -116,7 +119,7 @@ function TestimonialCard({
   t: (typeof testimonials)[number];
 }) {
   return (
-    <article className="mx-auto flex h-full max-w-lg flex-col rounded-[var(--radius-xl)] bg-[var(--color-bg-card)] p-8 shadow-[var(--shadow-md)] md:max-w-none">
+    <article className="mx-auto flex h-full w-full min-w-0 max-w-lg flex-col rounded-[var(--radius-xl)] bg-[var(--color-bg-card)] p-6 shadow-[var(--shadow-md)] sm:p-8 md:max-w-none">
       <span
         className="font-serif-quote mb-2 text-[80px] leading-none text-[var(--color-accent-light)]"
         aria-hidden

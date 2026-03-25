@@ -7,6 +7,45 @@ import { InfographicPlaceholder } from "@/components/ui/InfographicPlaceholder";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { treatments, type TreatmentItem } from "@/lib/awareness-treatments";
 
+const treatmentImages: Record<string, { src: string; alt: string }> = {
+  filling: {
+    src: "/api/understanding-treatment-images/tooth%20filling.png",
+    alt: "Tooth filling infographic",
+  },
+  rct: {
+    src: "/api/understanding-treatment-images/rootcanal%20treatment.png",
+    alt: "Root canal treatment infographic",
+  },
+  extraction: {
+    src: "/api/understanding-treatment-images/Tooth%20extraction.png",
+    alt: "Tooth extraction infographic",
+  },
+  implant: {
+    src: "/api/understanding-treatment-images/Dental%20Implant.png",
+    alt: "Dental implant infographic",
+  },
+  ortho: {
+    src: "/api/understanding-treatment-images/dental%20Braces.png",
+    alt: "Dental braces infographic",
+  },
+  crown: {
+    src: "/api/understanding-treatment-images/dental%20crown.png",
+    alt: "Dental crown infographic",
+  },
+  whitening: {
+    src: "/api/understanding-treatment-images/teetch%20whitening.png",
+    alt: "Professional teeth whitening infographic",
+  },
+  srp: {
+    src: "/api/understanding-treatment-images/scaling%20and%20root%20planing.svg",
+    alt: "Scaling and root planing infographic",
+  },
+  bridge: {
+    src: "/api/understanding-treatment-images/Dental%20bridge.png",
+    alt: "Dental bridge infographic",
+  },
+};
+
 function PainBadge({ t }: { t: TreatmentItem }) {
   const map = {
     low: { emoji: "🟢", label: "Low" },
@@ -22,7 +61,7 @@ function PainBadge({ t }: { t: TreatmentItem }) {
 }
 
 export function TreatmentGuide() {
-  const [openId, setOpenId] = useState<string | null>(treatments[0].id);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <section
@@ -44,25 +83,26 @@ export function TreatmentGuide() {
           </div>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid min-w-0 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {treatments.map((item, i) => {
             const open = openId === item.id;
+            const img = treatmentImages[item.id];
             return (
               <Reveal key={item.id} staggerIndex={i % 6}>
-                <article className="flex flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-bg-card)] shadow-[var(--shadow-sm)]">
+                <article className="flex w-full min-h-[310px] min-w-0 flex-col overflow-visible rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-bg-card)] shadow-[var(--shadow-sm)]">
                   <button
                     type="button"
                     onClick={() => setOpenId(open ? null : item.id)}
-                    className="flex w-full flex-col items-start gap-2 p-6 text-left transition-colors hover:bg-[var(--color-bg-secondary)]"
+                    className="flex min-h-[310px] w-full min-w-0 flex-col items-start gap-2 p-6 text-left transition-colors hover:bg-[var(--color-bg-secondary)]"
                     aria-expanded={open}
                   >
                     <span className="text-2xl" aria-hidden>
                       🦷
                     </span>
-                    <h3 className="font-heading text-[length:var(--text-h3)] font-semibold text-[var(--color-text-primary)]">
+                    <h3 className="break-words font-heading text-[length:var(--text-h3)] font-semibold text-[var(--color-text-primary)]">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-[var(--color-text-secondary)]">
+                    <p className="break-words text-sm text-[var(--color-text-secondary)]">
                       {item.short}
                     </p>
                     <div className="mt-2 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
@@ -72,39 +112,41 @@ export function TreatmentGuide() {
                     </div>
                     <PainBadge t={item} />
                     <ChevronDown
-                      className={`ml-auto mt-2 h-5 w-5 shrink-0 text-[var(--color-accent)] transition-transform ${
+                      className={`ml-auto mt-auto h-5 w-5 shrink-0 text-[var(--color-accent)] transition-transform ${
                         open ? "rotate-180" : ""
                       }`}
                       aria-hidden
                     />
                   </button>
                   {open && (
-                    <div className="border-t border-[var(--color-divider)] px-6 pb-6 pt-2">
+                    <div className="w-full min-w-0 border-t border-[var(--color-divider)] px-6 pb-6 pt-2">
                       {item.infographic && (
                         <InfographicPlaceholder
                           width={item.infographic.w}
                           height={item.infographic.h}
                           label={item.infographic.label}
-                          className="mb-4 w-full"
+                          imageSrc={img?.src}
+                          imageAlt={img?.alt}
+                          className="mb-4 w-full max-w-full"
                         />
                       )}
                       {item.sections.map((sec, j) => (
                         <div key={j} className="mt-4 first:mt-0">
                           {sec.title && (
-                            <h4 className="font-heading mb-2 text-sm font-semibold text-[var(--color-primary)]">
+                            <h4 className="break-words font-heading mb-2 text-sm font-semibold text-[var(--color-primary)]">
                               {sec.title}
                             </h4>
                           )}
                           {sec.body?.map((line) => (
                             <p
                               key={line}
-                              className="text-sm leading-relaxed text-[var(--color-text-secondary)]"
+                              className="break-words text-sm leading-relaxed text-[var(--color-text-secondary)]"
                             >
                               {line}
                             </p>
                           ))}
                           {sec.list && (
-                            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-[var(--color-text-secondary)]">
+                            <ul className="mt-2 w-full break-words list-disc space-y-1 pl-5 text-sm text-[var(--color-text-secondary)]">
                               {sec.list.map((li) => (
                                 <li key={li}>{li}</li>
                               ))}

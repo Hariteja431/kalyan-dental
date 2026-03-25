@@ -31,7 +31,7 @@ export function Hero() {
         className="absolute inset-0 will-change-transform"
         style={{ transform: `translateY(${parallax}px)` }}
       >
-        <div className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden">
+        <div className="relative h-[100dvh] min-h-[100dvh] w-full overflow-hidden md:min-h-[600px]">
           <Image
             src={HERO_IMAGE}
             alt="Modern, bright dental clinic interior at Kalyan Dental"
@@ -66,7 +66,7 @@ export function Hero() {
             Rajamahendravaram&apos;s Trusted Dental Care
           </p>
           <h1
-            className="font-heading mb-6 max-w-xl text-[length:var(--text-display)] font-extrabold leading-[1.05] text-white opacity-0"
+            className="font-heading mb-6 max-w-xl break-words text-[length:var(--text-display)] font-extrabold leading-[1.05] text-white opacity-0"
             style={{
               animation: "fadeUp 0.7s var(--ease-out) 150ms forwards",
             }}
@@ -114,9 +114,6 @@ export function Hero() {
           <ChevronDown className="h-5 w-5 animate-bounce text-white/90" aria-hidden />
         </div>
 
-        <div className="pointer-events-none absolute bottom-8 right-8 hidden max-w-sm rounded-full border border-white/20 bg-white/15 px-4 py-2 text-sm text-white/95 shadow-lg backdrop-blur-md md:block">
-          ✓ 4 Specialist Doctors | Mon–Sat: 9AM–7PM
-        </div>
       </div>
     </section>
   );

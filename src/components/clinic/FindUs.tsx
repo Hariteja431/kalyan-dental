@@ -18,8 +18,8 @@ export function FindUs() {
       id="find-us"
       className="bg-[var(--color-bg-secondary)] py-12 md:py-16 lg:py-20"
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+      <div className="mx-auto max-w-7xl min-w-0 px-4 md:px-6">
+        <div className="grid min-w-0 gap-12 lg:grid-cols-2 lg:items-start">
           <Reveal>
             <SectionEyebrow>Find Us</SectionEyebrow>
             <h2 className="font-heading mb-8 text-[length:var(--text-h1)] font-bold leading-[1.1] text-[var(--color-text-primary)]">
@@ -60,8 +60,8 @@ export function FindUs() {
           </Reveal>
 
           <Reveal staggerIndex={2}>
-            <div className="overflow-hidden rounded-[var(--radius-lg)] shadow-[var(--shadow-md)]">
-              <div className="relative aspect-[4/3] w-full bg-[var(--color-divider)]">
+            <div className="min-w-0 overflow-hidden rounded-[var(--radius-lg)] shadow-[var(--shadow-md)]">
+              <div className="relative aspect-[4/3] w-full min-w-0 bg-[var(--color-divider)]">
                 <iframe
                   title="Kalyan Dental on Google Maps"
                   src="https://www.google.com/maps?q=Kalyan+Dental+Rajahmundry&output=embed"

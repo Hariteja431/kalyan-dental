@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Logo } from "@/components/layout/Logo";
 import {
   ADDRESS_LINES,
   CLINIC_HOURS,
@@ -21,9 +22,7 @@ export function Footer() {
     <footer className="bg-[var(--color-bg-dark)] text-[var(--color-text-inverse)]">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 lg:grid-cols-4 md:px-6">
         <div>
-          <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-sm font-bold text-[var(--color-primary)]">
-            KD
-          </div>
+          <Logo variant="footer" />
           <p className="max-w-xs text-sm leading-relaxed text-white/80">
             Kalyan Dental — Caring for your smile with expertise and compassion.
           </p>
@@ -117,7 +116,7 @@ export function Footer() {
             Contact Us
           </h3>
           <address className="not-italic text-sm leading-relaxed text-white/80">
-            <p className="mb-3">
+            <p className="mb-3 break-words">
               📍 {ADDRESS_LINES.slice(0, 4).join(", ")}
             </p>
             <p className="mb-1">

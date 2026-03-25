@@ -25,9 +25,9 @@ export function About() {
   return (
     <section
       id="about"
-      className="bg-[var(--color-bg-secondary)] py-12 md:py-16 lg:py-20"
+      className="overflow-x-hidden bg-[var(--color-bg-secondary)] py-12 md:py-16 lg:py-20"
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+      <div className="mx-auto max-w-7xl min-w-0 px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <SectionEyebrow>About Us</SectionEyebrow>
@@ -56,39 +56,31 @@ export function About() {
           </Reveal>
 
           <Reveal staggerIndex={2}>
-            <div className="relative mx-auto max-w-lg lg:ml-auto">
+            <div className="relative mx-auto max-w-lg min-w-0 overflow-hidden lg:ml-auto">
               <div className="absolute -left-3 top-8 bottom-8 w-1 rounded-full bg-[var(--color-accent)] md:-left-4" />
-              <div className="relative pl-4 md:pl-6">
+              <div className="relative min-w-0 pl-4 md:pl-6">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] shadow-[var(--shadow-lg)]">
                   <Image
-                    src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&h=600&fit=crop&q=80"
-                    alt="Welcoming dental clinic reception area"
+                    src="/api/service-images/about%20us.png"
+                    alt="Kalyan Dental clinic about us image"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 480px"
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute -bottom-6 -right-2 w-[55%] overflow-hidden rounded-[var(--radius-lg)] border-4 border-[var(--color-bg-secondary)] shadow-[var(--shadow-md)] md:-right-6">
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=450&fit=crop&q=80"
-                      alt="Dentist consulting with a patient"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 45vw, 280px"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
               </div>
             </div>
           </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-3">
+        <div className="mt-16 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pl-4 pr-4 [-webkit-overflow-scrolling:touch] md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:pb-0 md:pl-0 md:pr-0">
           {values.map(({ title, body, Icon }, i) => (
-            <Reveal key={title} staggerIndex={i}>
+            <Reveal
+              key={title}
+              staggerIndex={i}
+              className="min-w-[min(100%,280px)] shrink-0 snap-center md:min-w-0"
+            >
               <article className="h-full rounded-[var(--radius-lg)] bg-[var(--color-bg-card)] p-6 shadow-[var(--shadow-md)] transition-transform duration-[var(--transition-base)] hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]">
                 <Icon
                   className="mb-3 h-8 w-8 text-[var(--color-accent)]"

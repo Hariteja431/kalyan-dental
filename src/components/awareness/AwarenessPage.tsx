@@ -1,5 +1,6 @@
 import { CommonProblems } from "./CommonProblems";
 import { ChildrenHealth } from "./ChildrenHealth";
+import { CostOfNeglect } from "./CostOfNeglect";
 import { FaqSection } from "./FaqSection";
 import { HubHero } from "./HubHero";
 import { PreventionZone } from "./PreventionZone";
@@ -10,6 +11,7 @@ export function AwarenessPage() {
     <>
       <HubHero />
       <PreventionZone />
+      <CostOfNeglect />
       <CommonProblems />
       <TreatmentGuide />
       <ChildrenHealth />

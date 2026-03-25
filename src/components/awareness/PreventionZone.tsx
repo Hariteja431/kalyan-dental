@@ -6,6 +6,7 @@ import {
   Moon,
   Shield,
 } from "lucide-react";
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { InfographicPlaceholder } from "@/components/ui/InfographicPlaceholder";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
@@ -16,28 +17,32 @@ const dailyHabits = [
     title: "Brush Twice, 2 Minutes Each Time",
     body: "Use a soft-bristled brush and fluoride toothpaste. Hold your brush at a 45° angle to the gumline. Brush all surfaces — outer, inner, and chewing.",
     tag: "Daily Habit",
-    placeholder: "Infographic: Correct brushing angle and technique",
+    imageSrc: "/api/daily-habits-images/brushing%20image.png",
+    imageAlt: "Daily habit infographic showing proper brushing technique",
   },
   {
     emoji: "🧵",
     title: "Floss Once a Day — No Excuses",
     body: "Flossing removes plaque and food from places your brush can't reach. It prevents gum disease and cavities between teeth. 15–18 inches of floss is all you need.",
     tag: "Daily Habit",
-    placeholder: "Infographic: How to floss correctly",
+    imageSrc: "/api/daily-habits-images/flossing.png",
+    imageAlt: "Daily habit infographic showing correct flossing steps",
   },
   {
     emoji: "💧",
     title: "Water Is Your Teeth's Best Friend",
     body: "Drinking water washes away food particles, dilutes acids, and helps maintain saliva production — your mouth's natural defense system.",
     tag: "Daily Habit",
-    placeholder: "Infographic: Benefits of water for oral health",
+    imageSrc: "/api/daily-habits-images/taking%20water.png",
+    imageAlt: "Daily habit infographic about hydration and oral health",
   },
   {
     emoji: "🍎",
     title: "What You Eat Affects Your Teeth",
     body: "Foods high in sugar feed cavity-causing bacteria. Limit sugary snacks and acidic drinks. Calcium-rich foods (dairy, leafy greens, almonds) strengthen enamel naturally.",
     tag: "Nutrition",
-    placeholder: "Infographic: Foods good vs bad for teeth",
+    imageSrc: "/api/daily-habits-images/food%20habits.png",
+    imageAlt: "Daily habit infographic about healthy food choices for teeth",
   },
 ] as const;
 
@@ -87,12 +92,16 @@ export function PreventionZone() {
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--color-text-secondary)]">
                     {c.body}
                   </p>
-                  <InfographicPlaceholder
-                    width={300}
-                    height={200}
-                    label={c.placeholder}
-                    className="mt-4 w-full"
-                  />
+                  <div className="relative mt-4 aspect-[3/2] w-full overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-white p-2">
+                    <Image
+                      src={c.imageSrc}
+                      alt={c.imageAlt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      loading="lazy"
+                    />
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -108,6 +117,8 @@ export function PreventionZone() {
                 width={400}
                 height={300}
                 label='Infographic: What happens during a dental check-up'
+                imageSrc="/api/prevention-infographics/visit%20doctor%20every%206%20months.png"
+                imageAlt="Infographic: Visit your dentist every 6 months"
                 className="order-2 w-full lg:order-1"
               />
               <div className="order-1 lg:order-2">
@@ -150,6 +161,8 @@ export function PreventionZone() {
                 width={400}
                 height={300}
                 label='Infographic: What dental X-rays reveal'
+                imageSrc="/api/prevention-infographics/Dental%20xray.png"
+                imageAlt="Infographic: Dental X-rays reveal hidden issues"
                 className="w-full"
               />
             </div>

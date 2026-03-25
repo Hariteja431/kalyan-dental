@@ -17,11 +17,11 @@ export function HubHero() {
         }}
         aria-hidden
       />
-      <div className="relative z-10 mx-auto max-w-3xl">
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-3xl px-1">
         <SectionEyebrow className="text-center text-white/90">
           Dental Awareness Hub
         </SectionEyebrow>
-        <h1 className="font-heading mb-6 text-[length:var(--text-display)] font-extrabold leading-[1.05] text-white">
+        <h1 className="font-heading mb-6 break-words text-[length:var(--text-display)] font-extrabold leading-[1.05] text-white">
           Know Your Teeth. Love Your Smile.
         </h1>
         <p className="mx-auto max-w-2xl text-[length:var(--text-body-lg)] leading-relaxed text-white/90">

@@ -13,7 +13,7 @@ export const problemTabs: ProblemTab[] = [
     label: "Tooth Decay (Cavities)",
     infographic: {
       w: 480,
-      h: 280,
+      h: 270,
       label: "Infographic: 5 stages of tooth decay with cross-section diagram",
     },
     blocks: [
@@ -49,7 +49,7 @@ export const problemTabs: ProblemTab[] = [
     label: "Gum Disease",
     infographic: {
       w: 480,
-      h: 280,
+      h: 270,
       label: "Infographic: Healthy gum vs gingivitis vs periodontitis cross-section",
     },
     blocks: [
@@ -82,7 +82,7 @@ export const problemTabs: ProblemTab[] = [
     label: "Tooth Sensitivity",
     infographic: {
       w: 480,
-      h: 280,
+      h: 270,
       label: "Infographic: Why teeth become sensitive — exposed dentine diagram",
     },
     blocks: [
@@ -113,7 +113,7 @@ export const problemTabs: ProblemTab[] = [
     label: "Bad Breath (Halitosis)",
     infographic: {
       w: 480,
-      h: 280,
+      h: 270,
       label: "Infographic: Sources of bad breath in the mouth",
     },
     blocks: [
@@ -145,7 +145,7 @@ export const problemTabs: ProblemTab[] = [
     label: "Teeth Grinding (Bruxism)",
     infographic: {
       w: 480,
-      h: 280,
+      h: 270,
       label: "Infographic: Effects of bruxism on teeth over time",
     },
     blocks: [
@@ -175,7 +175,7 @@ export const problemTabs: ProblemTab[] = [
     label: "Tooth Abscess",
     infographic: {
       w: 480,
-      h: 280,
+      h: 270,
       label: "Infographic: Dental abscess location types — periapical vs periodontal",
     },
     blocks: [
@@ -205,7 +205,7 @@ export const problemTabs: ProblemTab[] = [
     label: "Cracked / Chipped Tooth",
     infographic: {
       w: 480,
-      h: 280,
+      h: 270,
       label: "Infographic: 5 types of tooth cracks illustrated",
     },
     blocks: [
@@ -229,7 +229,7 @@ export const problemTabs: ProblemTab[] = [
   {
     id: "dry",
     label: "Dry Mouth (Xerostomia)",
-    infographic: { w: 480, h: 280, label: "Infographic: Saliva and oral health" },
+    infographic: { w: 480, h: 270, label: "Infographic: Saliva and oral health" },
     blocks: [
       {
         type: "p",

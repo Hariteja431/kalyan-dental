@@ -1,5 +1,6 @@
 import { About } from "./About";
 import { Appointment } from "./Appointment";
+import { ClinicGallery } from "./ClinicGallery";
 import { Doctors } from "./Doctors";
 import { FindUs } from "./FindUs";
 import { Hero } from "./Hero";
@@ -14,6 +15,7 @@ export function ClinicPage() {
       <About />
       <Doctors />
       <Services />
+      <ClinicGallery />
       <WhyChoose />
       <Testimonials />
       <Appointment />

@@ -56,7 +56,7 @@ export default function RootLayout({
       lang="en"
       className={`${plusJakarta.variable} ${inter.variable} ${playfair.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-[var(--color-bg-primary)] font-sans text-[var(--color-text-primary)]">
+      <body className="min-h-full min-w-0 overflow-x-hidden bg-[var(--color-bg-primary)] font-sans text-[var(--color-text-primary)]">
         <LocalBusinessJsonLd />
         <ReadingProgress />
         <Header />

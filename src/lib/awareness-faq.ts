@@ -31,24 +31,4 @@ export const awarenessFaq: FaqItem[] = [
     q: "Do I need an appointment or can I walk in?",
     a: "We welcome both appointments and walk-ins, though an appointment ensures minimal waiting time. Call us at +91 99854 78470 or use the booking form on this website.",
   },
-  {
-    q: "Is parking available near the clinic?",
-    a: "Yes, street parking is available on Tilak Road. The clinic is located opposite Canara Bank and next to IBACO — easy to identify landmarks.",
-  },
-  {
-    q: "Do you treat children?",
-    a: "Yes. Dr. Lalitha Devi is our pediatric dental specialist and is experienced in making dental visits comfortable and positive for children of all ages.",
-  },
-  {
-    q: "What payment methods do you accept?",
-    a: "We accept cash and UPI payments. Details on other payment options — please contact the clinic directly.",
-  },
-  {
-    q: "Can I get a dental emergency appointment?",
-    a: "Yes. For dental emergencies (severe pain, swelling, broken tooth, abscess), please call us immediately at +91 99854 78470. We will do our best to see you the same day.",
-  },
-  {
-    q: "Do you offer any payment plans for expensive treatments?",
-    a: "Please contact the clinic directly to discuss treatment cost and available options — we aim to make quality dental care accessible.",
-  },
 ];

@@ -50,16 +50,14 @@ export function FaqSection() {
                     id={panelId}
                     role="region"
                     aria-labelledby={buttonId}
-                    hidden={!isOpen}
-                    className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    aria-hidden={!isOpen}
+                    className={`overflow-hidden border-t border-[var(--color-divider)] transition-[max-height] duration-300 ease-out ${
+                      isOpen ? "max-h-[480px]" : "max-h-0 border-t-0"
                     }`}
                   >
-                    <div className="min-h-0 overflow-hidden">
-                      <p className="border-t border-[var(--color-divider)] px-5 pb-5 pt-3 text-[length:var(--text-body)] leading-relaxed text-[var(--color-text-secondary)]">
-                        {item.a}
-                      </p>
-                    </div>
+                    <p className="px-5 pb-5 pt-3 text-[length:var(--text-body)] leading-relaxed text-[var(--color-text-secondary)]">
+                      {item.a}
+                    </p>
                   </div>
                 </div>
               </Reveal>

@@ -6,16 +6,55 @@ import { InfographicPlaceholder } from "@/components/ui/InfographicPlaceholder";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { problemTabs } from "@/lib/awareness-problems";
 
+const commonProblemImages: Record<
+  string,
+  { src: string; alt: string }
+> = {
+  decay: {
+    src: "/api/common-dental-problems-images/tooth%20decay.png",
+    alt: "Tooth decay infographic",
+  },
+  gum: {
+    src: "/api/common-dental-problems-images/gum%20disease.png",
+    alt: "Gum disease infographic",
+  },
+  sensitivity: {
+    src: "/api/common-dental-problems-images/Tooth%20sensitivity.png",
+    alt: "Tooth sensitivity infographic",
+  },
+  halitosis: {
+    src: "/api/common-dental-problems-images/Bad%20Breath.png",
+    alt: "Bad breath infographic",
+  },
+  bruxism: {
+    src: "/api/common-dental-problems-images/Teeth%20Grinding.png",
+    alt: "Teeth grinding infographic",
+  },
+  abscess: {
+    src: "/api/common-dental-problems-images/Dental%20abscess.png",
+    alt: "Dental abscess infographic",
+  },
+  cracked: {
+    src: "/api/common-dental-problems-images/Cracked%20or%20chipped%20tooth.png",
+    alt: "Cracked or chipped tooth infographic",
+  },
+  dry: {
+    src: "/api/common-dental-problems-images/Dry%20Mouth.png",
+    alt: "Dry mouth infographic",
+  },
+};
+
 export function CommonProblems() {
   const [active, setActive] = useState(problemTabs[0].id);
   const tab = problemTabs.find((t) => t.id === active) ?? problemTabs[0];
+  const tabImage = commonProblemImages[tab.id];
 
   return (
     <section
       id="problems"
-      className="scroll-mt-24 bg-[var(--color-bg-secondary)] py-12 md:py-16 lg:py-20"
+      className="overflow-x-hidden scroll-mt-24 bg-[var(--color-bg-secondary)] py-12 md:py-16 lg:py-20"
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+      <div className="mx-auto max-w-7xl min-w-0 px-4 md:px-6">
         <Reveal>
           <div className="mb-10 text-center">
             <SectionEyebrow className="text-center">Know What You&apos;re Facing</SectionEyebrow>
@@ -30,7 +69,7 @@ export function CommonProblems() {
         </Reveal>
 
         <div
-          className="mb-8 flex gap-2 overflow-x-auto pb-2 md:flex-wrap md:justify-center"
+          className="-mx-1 mb-8 flex gap-2 overflow-x-auto scroll-smooth px-1 pb-2 [-webkit-overflow-scrolling:touch] md:mx-0 md:flex-wrap md:justify-center md:overflow-visible md:px-0"
           role="tablist"
           aria-label="Dental problems"
         >
@@ -58,6 +97,8 @@ export function CommonProblems() {
               width={tab.infographic.w}
               height={tab.infographic.h}
               label={tab.infographic.label}
+              imageSrc={tabImage?.src}
+              imageAlt={tabImage?.alt}
               className="mb-8 w-full max-w-2xl mx-auto"
             />
             <div className="max-w-none">

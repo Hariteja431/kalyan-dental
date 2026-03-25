@@ -8,7 +8,7 @@ export type TreatmentItem = {
   pain: "low" | "moderate" | "managed";
   painNote: string;
   infographic?: { w: number; h: number; label: string };
-  sections: { title?: string; body: string[]; list?: string[] }[];
+  sections: { title?: string; body?: string[]; list?: string[] }[];
 };
 
 export const treatments: TreatmentItem[] = [
@@ -247,6 +247,11 @@ export const treatments: TreatmentItem[] = [
     duration: "60–120 min (1–2 visits)",
     pain: "moderate",
     painNote: "Mild (local anaesthesia usually applied)",
+    infographic: {
+      w: 480,
+      h: 260,
+      label: "Infographic: Scaling & root planing — tartar removal above and below the gumline",
+    },
     sections: [
       {
         title: "Regular Cleaning vs Deep Cleaning",

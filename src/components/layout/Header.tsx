@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavbarScrolled } from "@/hooks/useNavbarScrolled";
+import { Logo } from "@/components/layout/Logo";
 
 const navBase =
   "relative pb-1 text-sm font-semibold transition-colors duration-[var(--transition-fast)]";
@@ -16,6 +17,7 @@ export function Header() {
 
   const isClinic = pathname === "/" || pathname === "/clinic";
   const isAwareness = pathname === "/awareness";
+  const wordmarkColorClass = "text-[var(--color-primary)]";
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -31,16 +33,18 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-[1000] flex h-16 items-center transition-[background,box-shadow,border-color] duration-[var(--transition-base)] md:h-[72px] ${headerBg}`}
+        className={`fixed left-0 right-0 top-0 z-[1003] flex h-16 items-center transition-[background,box-shadow,border-color] duration-[var(--transition-base)] md:h-[72px] ${headerBg}`}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-6">
-          <Link
-            href="/"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold text-[var(--color-primary)] shadow-sm ring-1 ring-[var(--color-border)]"
-            aria-label="Kalyan Dental home"
-          >
-            KD
-          </Link>
+          <div className="flex items-center gap-[10px]">
+            <Logo />
+            <span
+              className={`text-[15px] font-bold uppercase tracking-[0.12em] ${wordmarkColorClass}`}
+              aria-label="Kalyan Dental"
+            >
+              KALYAN DENTAL
+            </span>
+          </div>
 
           <nav
             className="hidden items-center gap-10 md:flex"
@@ -93,7 +97,7 @@ export function Header() {
       {open && (
         <div
           id="mobile-menu"
-          className="fixed inset-0 z-[999] flex flex-col bg-[rgba(11,31,46,0.95)] px-6 pb-10 pt-24 md:hidden"
+          className="fixed inset-0 z-[1002] flex flex-col bg-[rgba(11,31,46,0.95)] px-6 pb-10 pt-24 md:hidden"
           role="dialog"
           aria-modal="true"
         >

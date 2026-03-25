@@ -18,7 +18,7 @@ export function Services() {
       id="services"
       className="bg-[var(--color-bg-secondary)] py-12 md:py-16 lg:py-20"
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
+      <div className="mx-auto max-w-7xl min-w-0 px-4 md:px-6">
         <Reveal>
           <div className="mb-12 text-center">
             <SectionEyebrow className="text-center">What We Do</SectionEyebrow>
