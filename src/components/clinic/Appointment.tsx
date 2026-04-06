@@ -39,6 +39,7 @@ export function Appointment() {
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
   const [shake, setShake] = useState(false);
   const [fieldError, setFieldError] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const validate = () => {
     if (!form.fullName.trim()) return "fullName";
@@ -53,15 +54,32 @@ export function Appointment() {
     const bad = validate();
     if (bad) {
       setFieldError(bad);
+      setErrorMessage("Please fill out all required fields.");
       setShake(true);
       setTimeout(() => setShake(false), 400);
       return;
     }
     setFieldError(null);
+    setErrorMessage(null);
     setStatus("loading");
+    
+    const message = `Hello, I would like to book an appointment.
+Name: ${form.fullName}
+Phone: ${form.phone}
+Email: ${form.email || "N/A"}
+Service: ${form.service || "N/A"}
+Date: ${form.date}
+Time: ${form.time}
+Message/Concern: ${form.message || "N/A"}`;
+
+    const whatsappNumber = "919985478470";
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
     window.setTimeout(() => {
       setStatus("success");
-    }, 900);
+      window.open(whatsappUrl, "_blank");
+    }, 500);
   };
 
   return (
@@ -253,6 +271,11 @@ export function Appointment() {
                       className="w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-white px-4 py-3 focus:border-[var(--color-accent)] focus:outline-none focus:ring-[3px] focus:ring-[rgba(0,180,166,0.2)]"
                     />
                   </div>
+                  {errorMessage && (
+                    <p className="text-sm font-medium text-[var(--color-danger)] text-center">
+                      {errorMessage}
+                    </p>
+                  )}
                   <button
                     type="submit"
                     disabled={status === "loading"}

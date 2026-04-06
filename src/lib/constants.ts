@@ -25,7 +25,7 @@ export const GOOGLE_MAPS_URL =
 
 /** Client logo — direct CDN URL (hosted at https://postimg.cc/JDkN1MT5) */
 export const LOGO_IMAGE_URL =
-  "https://i.postimg.cc/fzspZtLz/cropped-circle-image.png";
+  "/logo.png";
 
 export const META = {
   title: "Kalyan Dental | Rajamahendravaram's Trusted Dental Care",
