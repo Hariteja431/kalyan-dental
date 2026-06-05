@@ -34,7 +34,7 @@ export function Doctors() {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-heading text-[length:var(--text-h3)] font-semibold text-[var(--color-text-primary)]">
+                <h3 className="font-heading text-[length:var(--text-h3)] font-semibold uppercase text-[var(--color-text-primary)]">
                   {doc.name}
                 </h3>
                 <p className="mt-1 text-[length:var(--text-body)] text-[var(--color-accent)]">
