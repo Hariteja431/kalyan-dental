@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ReadingProgress } from "@/components/layout/ReadingProgress";
 import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
-import { META } from "@/lib/constants";
+import { META, SITE_URL } from "@/lib/constants";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -30,6 +30,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: META.title,
   description: META.description,
   openGraph: {
@@ -37,6 +38,8 @@ export const metadata: Metadata = {
     description: META.description,
     locale: "en_IN",
     type: "website",
+    url: SITE_URL,
+    siteName: "Kalyan Dental",
   },
 };
 

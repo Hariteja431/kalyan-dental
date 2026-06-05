@@ -35,11 +35,9 @@ function useReveal(index: number) {
 
 function GalleryItem({
   index,
-  className,
   onOpen,
 }: {
   index: number;
-  className: string;
   onOpen: (index: number) => void;
 }) {
   const img = clinicGalleryImages[index];
@@ -48,217 +46,164 @@ function GalleryItem({
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "reveal-visible" : ""} ${className}`}
+      className={`reveal ${visible ? "reveal-visible" : ""} mb-4 break-inside-avoid`}
       style={{
         transitionDelay: visible
-          ? `calc(${index} * var(--gallery-stagger-delay))`
+          ? `calc((${index} % 6) * var(--gallery-stagger-delay))`
           : undefined,
       }}
     >
       <button
         type="button"
-        className="group relative block h-full min-h-[44px] w-full overflow-hidden rounded-[var(--radius-md)] focus-visible:outline-none lg:rounded-[var(--radius-lg)]"
+        className="group relative block w-full overflow-hidden rounded-[var(--radius-md)] focus-visible:outline-none lg:rounded-[var(--radius-lg)] bg-[var(--color-border)] shadow-sm hover:shadow-lg transition-all duration-[var(--transition-slow)]"
         onClick={() => onOpen(index)}
         aria-label={`Open ${img.name} in gallery lightbox`}
       >
         <Image
           src={img.src}
           alt={img.alt}
-          fill
-          loading="lazy"
-          sizes="(max-width: 639px) 50vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-[var(--transition-slow)] ease-[var(--ease-out)] lg:group-hover:scale-[1.05]"
+          width={800}
+          height={600}
+          sizes="(max-width: 639px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="w-full h-auto object-cover transition-transform duration-[var(--transition-slow)] ease-[var(--ease-out)] lg:group-hover:scale-[1.05]"
         />
-        <div className="pointer-events-none absolute inset-0 bg-[rgba(11,76,108,0)] transition-colors duration-[var(--transition-base)] lg:group-hover:bg-[rgba(11,76,108,0.45)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.6)] via-[rgba(0,0,0,0)] to-[rgba(0,0,0,0)] opacity-0 transition-opacity duration-[var(--transition-base)] lg:group-hover:opacity-100" />
         <div className="pointer-events-none absolute inset-0 hidden items-center justify-center opacity-0 transition-opacity duration-[var(--transition-base)] lg:flex lg:group-hover:opacity-100">
-          <ZoomIn className="h-7 w-7 text-white" aria-hidden />
+          <div className="rounded-full bg-white/20 p-3 backdrop-blur-md">
+            <ZoomIn className="h-6 w-6 text-white" aria-hidden />
+          </div>
         </div>
       </button>
     </div>
   );
 }
 
-function MobileLayout({ onOpen }: { onOpen: (index: number) => void }) {
-  const mobileClasses = [
-    "row-span-2", // Pattern A: tall left
-    "row-span-1",
-    "row-span-1",
-    "row-span-1", // Pattern C: side-by-side squares
-    "row-span-1",
-    "col-span-2 row-span-1", // Pattern B: full-width break in the middle
-    "row-span-2", // Pattern A: tall left again
-    "row-span-1",
-    "row-span-1",
-    "row-span-1", // Pattern C: ending pair
-    "row-span-1",
-  ];
-
-  return (
-    <div className="grid auto-rows-[108px] grid-cols-2 grid-flow-dense gap-2 sm:hidden">
-      {clinicGalleryImages.map((_, i) => (
-        <GalleryItem
-          key={i}
-          index={i}
-          className={mobileClasses[i]}
-          onOpen={onOpen}
-        />
-      ))}
-    </div>
-  );
-}
-
-function TabletLayout({ onOpen }: { onOpen: (index: number) => void }) {
-  const classes = Array(clinicGalleryImages.length).fill("aspect-[4/5]");
-
-  return (
-    <div className="hidden grid-cols-2 gap-2.5 sm:grid lg:hidden">
-      {clinicGalleryImages.map((_, i) => (
-        <GalleryItem key={i} index={i} className={classes[i]} onOpen={onOpen} />
-      ))}
-    </div>
-  );
-}
-
-function DesktopLayout({ onOpen }: { onOpen: (index: number) => void }) {
-  const classes = Array(clinicGalleryImages.length).fill("aspect-[4/5]");
-
-  return (
-    <div className="hidden grid-cols-3 gap-3 lg:grid lg:grid-flow-dense">
-      {clinicGalleryImages.map((_, i) => (
-        <GalleryItem key={i} index={i} className={classes[i]} onOpen={onOpen} />
-      ))}
-    </div>
-  );
-}
+import { createPortal } from "react-dom";
 
 function Lightbox({
   state,
   onClose,
   onPrev,
   onNext,
-  onGo,
 }: {
   state: LightboxState;
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
-  onGo: (index: number) => void;
 }) {
-  const startX = useRef<number | null>(null);
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
   const current = clinicGalleryImages[state.index];
 
   useEffect(() => {
-    if (!state.open) return;
+    if (!state.open) {
+      document.body.style.overflow = "";
+      return;
+    }
+    
+    // Lock background scrolling
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
       if (event.key === "ArrowLeft") onPrev();
       if (event.key === "ArrowRight") onNext();
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = originalOverflow;
+    };
   }, [state.open, onClose, onPrev, onNext]);
-
-  useEffect(() => {
-    if (!state.open) return;
-    // Keep background interactive (popup is pointer-events-none outside the modal)
-    return;
-  }, [state.open]);
 
   if (!state.open) return null;
 
-  return (
+  const content = (
     <div
-      className="fixed inset-0 z-[1100] flex items-center justify-center bg-[rgba(11,31,46,0.96)] p-4 pointer-events-none"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/60 p-4 sm:p-6 backdrop-blur-sm transition-opacity duration-300 animate-in fade-in"
       role="dialog"
       aria-modal="true"
       aria-label="Clinic gallery lightbox"
+      onClick={onClose}
     >
-      <div className="pointer-events-auto relative flex w-full max-w-[1100px] flex-col items-center justify-center">
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute right-2 top-2 inline-flex h-12 w-12 min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-[rgba(255,255,255,0.12)] text-white transition-colors duration-[var(--transition-base)] hover:bg-[rgba(255,255,255,0.22)]"
-          aria-label="Close gallery"
-        >
-          <X className="h-6 w-6" />
-        </button>
+      <div 
+        className="relative flex w-[95vw] sm:w-[90vw] max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl animate-in zoom-in-95 duration-300 ease-out" 
+        onClick={(e) => e.stopPropagation()}
+        style={{ height: "85vh", maxHeight: "900px" }}
+      >
+        {/* Modal Header */}
+        <div className="flex items-center justify-between border-b border-gray-100 bg-white px-4 py-3 sm:px-6">
+          <span className="text-sm font-semibold text-[var(--color-text-secondary)]">
+            Image {state.index + 1} of {clinicGalleryImages.length}
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5 text-sm font-medium text-[var(--color-text-primary)] transition hover:bg-gray-200"
+            aria-label="Close gallery"
+          >
+            Close <X className="h-4 w-4" />
+          </button>
+        </div>
 
-        <div
-          className="relative h-[70vh] w-full max-w-[1000px] animate-[fadeUp_300ms_ease] sm:h-[75vh]"
-          onClick={(e) => e.stopPropagation()}
+        {/* Modal Body / Image */}
+        <div 
+          className="relative flex w-full flex-1 items-center justify-center bg-[#f8fafc] p-2 sm:p-4 overflow-hidden"
           onTouchStart={(e) => {
-            startX.current = e.changedTouches[0]?.clientX ?? null;
+            setTouchStart({
+              x: e.changedTouches[0].clientX,
+              y: e.changedTouches[0].clientY,
+            });
           }}
           onTouchEnd={(e) => {
-            const endX = e.changedTouches[0]?.clientX ?? null;
-            if (startX.current == null || endX == null) return;
-            const diff = startX.current - endX;
-            if (Math.abs(diff) > 50) {
-              if (diff > 0) onNext();
+            if (!touchStart) return;
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const diffX = touchStart.x - endX;
+            const diffY = touchStart.y - endY;
+
+            if (diffY < -80 && Math.abs(diffY) > Math.abs(diffX)) {
+              onClose();
+            } else if (Math.abs(diffX) > 50) {
+              if (diffX > 0) onNext();
               else onPrev();
             }
-            startX.current = null;
+            setTouchStart(null);
           }}
         >
           <Image
             src={current.src}
             alt={current.alt}
             fill
-            className="rounded-[var(--radius-lg)] object-contain"
-            sizes="92vw"
+            className="object-contain p-2"
+            sizes="100vw"
             priority
           />
-        </div>
 
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onPrev();
-          }}
-          className="absolute bottom-10 left-4 inline-flex h-12 w-12 min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-[rgba(255,255,255,0.12)] text-white transition-colors duration-[var(--transition-base)] hover:bg-[rgba(255,255,255,0.22)] lg:bottom-auto lg:left-6 lg:top-1/2 lg:-translate-y-1/2"
-          aria-label="Previous image"
-        >
-          <ChevronLeft className="h-6 w-6" />
-        </button>
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }}
-          className="absolute bottom-10 right-4 inline-flex h-12 w-12 min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-[rgba(255,255,255,0.12)] text-white transition-colors duration-[var(--transition-base)] hover:bg-[rgba(255,255,255,0.22)] lg:bottom-auto lg:right-6 lg:top-1/2 lg:-translate-y-1/2"
-          aria-label="Next image"
-        >
-          <ChevronRight className="h-6 w-6" />
-        </button>
-
-        <div className="pointer-events-none absolute bottom-10 flex flex-col items-center gap-2">
-          <p className="text-sm text-white">
-            {state.index + 1} / {clinicGalleryImages.length}
-          </p>
-          <div className="pointer-events-auto flex items-center gap-2">
-            {clinicGalleryImages.map((img, i) => (
-              <button
-                key={img.id}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onGo(i);
-                }}
-                className={`rounded-full transition-all duration-[var(--transition-fast)] ${
-                  i === state.index
-                    ? "h-2 w-2 bg-[var(--color-accent)]"
-                    : "h-1.5 w-1.5 bg-[rgba(255,255,255,0.3)]"
-                }`}
-                aria-label={`Open image ${i + 1}`}
-              />
-            ))}
-          </div>
+          {/* Navigation Controls inside the box */}
+          <button
+            type="button"
+            onClick={onPrev}
+            className="absolute left-2 sm:left-4 top-1/2 flex h-10 w-10 sm:h-12 sm:w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[var(--color-text-primary)] shadow-md transition hover:bg-gray-100 hover:scale-105"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+          </button>
+          <button
+            type="button"
+            onClick={onNext}
+            className="absolute right-2 sm:right-4 top-1/2 flex h-10 w-10 sm:h-12 sm:w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[var(--color-text-primary)] shadow-md transition hover:bg-gray-100 hover:scale-105"
+            aria-label="Next image"
+          >
+            <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+          </button>
         </div>
       </div>
     </div>
   );
+
+  return typeof document !== "undefined" ? createPortal(content, document.body) : null;
 }
 
 export function ClinicGallery() {
@@ -280,7 +225,6 @@ export function ClinicGallery() {
           ...s,
           index: (s.index + 1) % clinicGalleryImages.length,
         })),
-      onGo: (index: number) => setLightbox((s) => ({ ...s, index })),
     }),
     [],
   );
@@ -307,15 +251,16 @@ export function ClinicGallery() {
           </p>
         </Reveal>
 
-        <MobileLayout
-          onOpen={(index) => setLightbox({ open: true, index })}
-        />
-        <TabletLayout
-          onOpen={(index) => setLightbox({ open: true, index })}
-        />
-        <DesktopLayout
-          onOpen={(index) => setLightbox({ open: true, index })}
-        />
+        {/* Masonry Layout */}
+        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 xl:columns-3">
+          {clinicGalleryImages.map((_, i) => (
+            <GalleryItem
+              key={i}
+              index={i}
+              onOpen={(index) => setLightbox({ open: true, index })}
+            />
+          ))}
+        </div>
 
         <p className="mt-10 text-center text-[length:var(--text-body)] text-[var(--color-text-secondary)]">
           Want to visit us in person?{" "}
@@ -333,7 +278,6 @@ export function ClinicGallery() {
         onClose={handlers.onClose}
         onPrev={handlers.onPrev}
         onNext={handlers.onNext}
-        onGo={handlers.onGo}
       />
     </section>
   );

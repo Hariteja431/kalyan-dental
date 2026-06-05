@@ -21,7 +21,7 @@ export function CompareSliderScript() {
       return;
     }
 
-    let existing = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
+    const existing = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
     if (existing) {
       if (existing.dataset.loaded === "1") {
         runBoot();

@@ -1,10 +1,12 @@
-import { ADDRESS_LINES, CLINIC_NAME, PHONE_1, PHONE_2 } from "@/lib/constants";
+import { ADDRESS_LINES, CLINIC_NAME, PHONE_1, PHONE_2, SITE_URL, LOGO_IMAGE_URL } from "@/lib/constants";
 
 export function LocalBusinessJsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dentist",
     name: CLINIC_NAME,
+    url: SITE_URL,
+    image: `${SITE_URL}${LOGO_IMAGE_URL}`,
     address: {
       "@type": "PostalAddress",
       streetAddress: ADDRESS_LINES.slice(0, 2).join(", "),

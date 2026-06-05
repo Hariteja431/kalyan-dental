@@ -2,6 +2,8 @@
 
 "use client";
 
+import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
@@ -36,7 +38,6 @@ export function InfographicPlaceholder({
 
   const wrapperStyle = {
     borderRadius: showImage ? "var(--radius-lg)" : "12px",
-    minHeight: height,
     aspectRatio: width && height ? `${width} / ${height}` : undefined,
   };
 
@@ -62,11 +63,14 @@ export function InfographicPlaceholder({
         aria-label={label}
         onClick={() => setOpen(true)}
       >
-        <img
+        <Image
           src={imageSrc}
           alt={imageAlt ?? label}
           draggable={false}
           className="h-full w-full object-contain"
+          width={width || 800}
+          height={height || 600}
+          style={{ width: '100%', height: 'auto' }}
         />
       </button>
 
@@ -87,12 +91,14 @@ export function InfographicPlaceholder({
               <X className="h-6 w-6" />
             </button>
 
-            <div className="relative w-full max-h-[75vh] overflow-hidden rounded-[var(--radius-lg)] border border-[rgba(255,255,255,0.12)]">
-              <img
+            <div className="relative w-full overflow-hidden rounded-[var(--radius-lg)] border border-[rgba(255,255,255,0.12)] flex items-center justify-center">
+              <Image
                 src={imageSrc}
                 alt={imageAlt ?? label}
                 draggable={false}
-                className="block max-h-[75vh] w-auto max-w-full object-contain mx-auto"
+                className="block max-h-[85vh] w-auto max-w-full object-contain mx-auto"
+                width={width ? width * 2 : 1600}
+                height={height ? height * 2 : 1200}
               />
             </div>
           </div>

@@ -1,6 +1,7 @@
 /** PRD §10 — Contact & location (real) */
 
 export const CLINIC_NAME = "Kalyan Dental";
+export const SITE_URL = "https://www.kalyandental.com";
 
 export const ADDRESS_LINES = [
   "Door No. 79-2-20/3, Ibaco Lane",

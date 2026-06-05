@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { CompareSliderScript } from "./CompareSliderScript";
@@ -36,17 +37,23 @@ export function CostOfNeglect() {
               aria-label="Compare with care versus without care"
             >
               <div className="compare-slider__viewport">
-                <img
+                <Image
                   className="compare-slider__base"
                   src={IMG_WITHOUT_CARE}
                   alt="Dental condition without consistent care"
                   draggable={false}
+                  width={860}
+                  height={500}
+                  style={{ width: '100%', height: 'auto' }}
                 />
-                <img
+                <Image
                   className="compare-slider__top"
                   src={IMG_WITH_CARE}
                   alt=""
                   draggable={false}
+                  width={860}
+                  height={500}
+                  style={{ width: '100%', height: 'auto' }}
                 />
                 <div className="compare-slider__handle" aria-hidden="true">
                   <div className="compare-slider__handle-line" />
