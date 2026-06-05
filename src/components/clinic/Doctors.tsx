@@ -24,13 +24,13 @@ export function Doctors() {
           {doctors.map((doc, i) => (
             <Reveal key={doc.id} staggerIndex={i}>
               <article className="group flex h-full flex-col items-center rounded-[var(--radius-lg)] bg-[var(--color-bg-card)] p-6 text-center shadow-[var(--shadow-sm)] transition-all duration-[var(--transition-base)] hover:-translate-y-1.5 hover:shadow-[var(--shadow-md)]">
-                <div className="relative mb-6 h-[260px] w-full overflow-hidden rounded-xl border-b-4 border-[var(--color-accent)] bg-white/5">
+                <div className="relative mb-6 h-[200px] w-[200px] overflow-hidden rounded-xl border-2 border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.02)]">
                   <Image
                     src={doc.imageSrc}
                     alt={doc.imageAlt}
                     fill
                     className="object-contain p-2 transition-transform duration-[var(--transition-slow)] group-hover:scale-[1.03]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="200px"
                     loading="lazy"
                   />
                 </div>
