@@ -16,11 +16,11 @@ export function Doctors() {
             Meet the Doctors
           </h2>
           <p className="mx-auto mb-12 max-w-2xl text-[length:var(--text-body-lg)] text-[var(--color-text-secondary)]">
-            Four specialists — one commitment to your oral health.
+            Three expert specialists — one commitment to your oral health.
           </p>
         </Reveal>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {doctors.map((doc, i) => (
             <Reveal key={doc.id} staggerIndex={i}>
               <article className="group flex h-full flex-col items-center rounded-[var(--radius-lg)] bg-[var(--color-bg-card)] p-6 text-center shadow-[var(--shadow-sm)] transition-all duration-[var(--transition-base)] hover:-translate-y-1.5 hover:shadow-[var(--shadow-md)]">
