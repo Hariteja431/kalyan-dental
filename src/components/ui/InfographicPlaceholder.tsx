@@ -64,7 +64,7 @@ export function InfographicPlaceholder({
         onClick={() => setOpen(true)}
       >
         <Image
-          src={imageSrc}
+          src={imageSrc as string}
           alt={imageAlt ?? label}
           draggable={false}
           className="h-full w-full object-contain"
@@ -93,7 +93,7 @@ export function InfographicPlaceholder({
 
             <div className="relative w-full overflow-hidden rounded-[var(--radius-lg)] border border-[rgba(255,255,255,0.12)] flex items-center justify-center">
               <Image
-                src={imageSrc}
+                src={imageSrc as string}
                 alt={imageAlt ?? label}
                 draggable={false}
                 className="block max-h-[85vh] w-auto max-w-full object-contain mx-auto"
