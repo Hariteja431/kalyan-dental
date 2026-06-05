@@ -29,7 +29,7 @@ export const LOGO_IMAGE_URL =
   "/logo.png";
 
 export const META = {
-  title: "Kalyan Dental | Rajamahendravaram's Trusted Dental Care",
+  title: "Kalyan Dental Hospitals | Best Dental Clinic in Rajahmundry",
   description:
-    "Kalyan Dental in Rajahmundry offers comprehensive dental care by 4 specialist doctors. Book an appointment online or call +91 99854 78470.",
+    "Looking for the best dental hospitals in Rajahmundry? Kalyan Dental Hospitals offers expert care, including root canals, implants, braces, and cosmetic dentistry. Book your appointment today!",
 } as const;
