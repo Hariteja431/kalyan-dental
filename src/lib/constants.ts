@@ -1,3 +1,13 @@
+/** PRD §10 — Contact & location (real) */
+
+export const CLINIC_NAME = "Kalyan Dental";
+export const SITE_URL = "https://kalyandentalhospitals.com";
+
+export const ADDRESS_LINES = [
+  "Door No. 79-2-20/3, Ibaco Lane",
+  "Tilak Road, Opposite Canara Bank, Beside IBACO",
+  "Srinivas Nagar, Gandhipuram",
+  "Rajamahendravaram (Rajahmundry), Andhra Pradesh – 533103",
   "India",
 ] as const;
 
