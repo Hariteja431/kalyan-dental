@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Kalyan Dental",
   },
+  icons: {
+    icon: "/kalyan-dental-hospitals-logo.jpeg",
+  },
 };
 
 export const viewport = {
