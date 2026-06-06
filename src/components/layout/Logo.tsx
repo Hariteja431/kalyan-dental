@@ -15,8 +15,8 @@ export function Logo({ variant = "header" }: LogoProps) {
       href="/"
       className={
         isFooter
-          ? "relative mb-4 block h-14 w-48 shrink-0 overflow-hidden"
-          : "relative block h-14 w-48 shrink-0 overflow-hidden sm:h-16 sm:w-56"
+          ? "relative mb-4 block h-14 w-14 shrink-0 overflow-hidden"
+          : "relative block h-12 w-12 shrink-0 overflow-hidden sm:h-14 sm:w-14"
       }
       aria-label="Kalyan Dental home"
     >
