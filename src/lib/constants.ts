@@ -22,9 +22,7 @@ export const CLINIC_HOURS = {
 export const GOOGLE_MAPS_URL =
   "https://maps.app.goo.gl/ohYJuVxYtyCv8V8EA";
 
-/** Client logo — direct CDN URL (hosted at https://postimg.cc/JDkN1MT5) */
-export const LOGO_IMAGE_URL =
-  "/logo.png";
+export const LOGO_IMAGE_URL = "/new-logo.png";
 
 export const META = {
   title: "Kalyan Dental Hospitals | Best Dental Clinic in Rajahmundry",

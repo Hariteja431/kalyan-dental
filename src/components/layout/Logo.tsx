@@ -15,8 +15,8 @@ export function Logo({ variant = "header" }: LogoProps) {
       href="/"
       className={
         isFooter
-          ? "relative mb-4 block h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/95 p-0.5 ring-1 ring-white/15"
-          : "relative block h-14 w-14 shrink-0 overflow-hidden rounded-full sm:h-16 sm:w-16"
+          ? "relative mb-4 block h-14 w-48 shrink-0 overflow-hidden"
+          : "relative block h-14 w-48 shrink-0 overflow-hidden sm:h-16 sm:w-56"
       }
       aria-label="Kalyan Dental home"
     >
@@ -24,8 +24,8 @@ export function Logo({ variant = "header" }: LogoProps) {
         src={LOGO_IMAGE_URL}
         alt="Kalyan Dental Hospitals Logo"
         fill
-        className="object-contain object-center"
-        sizes="(max-width: 640px) 56px, 64px"
+        className={`object-contain ${isFooter ? "object-center md:object-left" : "object-left"}`}
+        sizes="(max-width: 640px) 192px, 224px"
         priority={variant === "header"}
       />
     </Link>
