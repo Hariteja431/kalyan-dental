@@ -7,9 +7,7 @@ import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import {
   CLINIC_HOURS,
   PHONE_1,
-  PHONE_2,
   PHONE_1_TEL,
-  PHONE_2_TEL,
 } from "@/lib/constants";
 import { serviceOptionsForForm } from "@/lib/services";
 import { timeSlots } from "@/lib/timeSlots";
@@ -108,11 +106,6 @@ Message/Concern: ${form.message || "N/A"}`;
               <p>
                 <a href={PHONE_1_TEL} className="hover:underline">
                   📞 {PHONE_1}
-                </a>
-              </p>
-              <p>
-                <a href={PHONE_2_TEL} className="hover:underline">
-                  📞 {PHONE_2}
                 </a>
               </p>
             </div>

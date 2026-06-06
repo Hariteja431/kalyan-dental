@@ -22,7 +22,7 @@ export function Logo({ variant = "header" }: LogoProps) {
     >
       <Image
         src={LOGO_IMAGE_URL}
-        alt="Kalyan Dental"
+        alt="Kalyan Dental Hospitals Logo"
         fill
         className="object-contain object-center"
         sizes="(max-width: 640px) 56px, 64px"

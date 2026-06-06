@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     "Braces and Invisalign",
     "Cosmetic dentistry Rajahmundry",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: META.title,
     description: META.description,

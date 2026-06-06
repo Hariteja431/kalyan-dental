@@ -4,6 +4,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Clinic & Services | Kalyan Dental Rajahmundry",
   description: "Explore our modern dental clinic in Rajamahendravaram. We offer root canals, implants, braces, and specialized treatments in a hygienic, comfortable environment.",
+  alternates: {
+    canonical: "/clinic",
+  },
 };
 
 export default function ClinicRoutePage() {

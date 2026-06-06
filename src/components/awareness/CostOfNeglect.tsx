@@ -49,7 +49,7 @@ export function CostOfNeglect() {
                 <Image
                   className="compare-slider__top"
                   src={IMG_WITH_CARE}
-                  alt=""
+                  alt="Healthy dental condition with consistent care"
                   draggable={false}
                   width={860}
                   height={500}
