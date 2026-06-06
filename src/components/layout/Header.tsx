@@ -38,13 +38,23 @@ export function Header() {
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2 sm:gap-3">
             <Logo />
-            <span
-              className={`text-[15px] font-bold uppercase tracking-[0.12em] ${wordmarkColorClass}`}
+            <div 
+              className="flex flex-col"
               style={{ fontFamily: "'Avenir', 'Avenir Next', sans-serif", marginTop: "2px" }}
-              aria-label="Kalyan Dental"
+              aria-label="Kalyan Dental Hospitals"
             >
-              KALYAN DENTAL
-            </span>
+              <span className={`text-[15px] font-bold uppercase tracking-[0.12em] leading-none ${wordmarkColorClass}`}>
+                KALYAN DENTAL
+              </span>
+              <span 
+                className={`mt-[3px] flex w-full justify-between text-[15px] font-bold uppercase leading-none ${wordmarkColorClass}`}
+                aria-hidden="true"
+              >
+                {"HOSPITALS".split("").map((char, index) => (
+                  <span key={index}>{char}</span>
+                ))}
+              </span>
+            </div>
           </div>
 
           <nav

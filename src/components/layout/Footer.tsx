@@ -6,7 +6,9 @@ import {
   CLINIC_HOURS,
   GOOGLE_MAPS_URL,
   PHONE_1,
+  PHONE_2,
   PHONE_1_TEL,
+  PHONE_2_TEL,
 } from "@/lib/constants";
 
 const social = [
@@ -120,6 +122,11 @@ export function Footer() {
             <p className="mb-1">
               <a href={PHONE_1_TEL} className="hover:text-[var(--color-accent)]">
                 📞 {PHONE_1}
+              </a>
+            </p>
+            <p className="mb-3">
+              <a href={PHONE_2_TEL} className="hover:text-[var(--color-accent)]">
+                📞 {PHONE_2}
               </a>
             </p>
             <p className="mb-1">🕘 {CLINIC_HOURS.weekdays}</p>
