@@ -17,14 +17,14 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Dr. Swetha transformed my smile with veneers and I couldn't be happier. The clinic is clean, modern, and the doctors genuinely listen to what you want.",
+      "Dr. Kalyan transformed my smile with veneers and I couldn't be happier. The clinic is clean, modern, and the doctors genuinely listen to what you want.",
     name: "Priya Lakshmi",
     treatment: "Smile Makeover",
     stars: 5,
   },
   {
     quote:
-      "My daughter used to cry at the dentist. After one visit to Dr. Lalitha, she was excited to come back. The pediatric approach here is exceptional.",
+      "My daughter used to cry at the dentist. After one visit to Dr. Jhansi, she was excited to come back. The pediatric approach here is exceptional.",
     name: "Anand Varma",
     treatment: "Pediatric Dentistry",
     stars: 5,
